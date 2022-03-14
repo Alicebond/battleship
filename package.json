@@ -1,0 +1,24 @@
+{
+  "name": "battleship",
+  "version": "0.1.0",
+  "description": "Test Drive Development practice.",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alicebond/battleship.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alicebond/battleship/issues"
+  },
+  "homepage": "https://github.com/Alicebond/battleship#readme"
+}
