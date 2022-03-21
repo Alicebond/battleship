@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/Alicebond/battleship/issues"
   },
-  "homepage": "https://github.com/Alicebond/battleship#readme"
+  "homepage": "https://github.com/Alicebond/battleship#readme",
+  "private": true
 }

@@ -4,8 +4,8 @@ function Ship(length) {
   // 2 3-length ships, 1 4-length ships,
 
   // place
-  const x = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-  const y = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+  const x = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  const y = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   function setPlace(length) {
     let place = '';
@@ -47,11 +47,11 @@ function Ship(length) {
         if (direction === 1) {
           let specIndex = Math.floor(Math.random() * 7);
           let placeX = x.splice(randomIndex, 1)[0];
-          let placeY = y.splice(specIndex, 3);
+          let placeY = y.splice(specIndex, 4);
           place = `${placeX + placeY[0]} ${placeX + placeY[1]} ${placeX + placeY[2]} ${placeX + placeY[3]}`;
         } else {
           let specIndex = Math.floor(Math.random() * 7);
-          let placeX = x.splice(specIndex, 3);
+          let placeX = x.splice(specIndex, 4);
           let placeY = y.splice(randomIndex, 1)[0];
           place = `${placeX[0] + placeY} ${placeX[1] + placeY} ${placeX[2] + placeY} ${placeX[3] + placeY}`;
         }
@@ -61,19 +61,25 @@ function Ship(length) {
 
   location = setPlace(length);
 
-  const hit = function (str) {
+  let showHitBlock = function (position) {
     // TODO:
-    // Get the block of the position from html, mark it as hit by adding a class
+    // Mark position as hit by adding a class
     // Make it unabe to click
-
-    if (location.includes(str)) {
-      const index = location.indexOf(str);
-      location.splice(index, 1);
-    }
   }
 
-  const isSunk = function () {
-    if (location.length === 0) return true;
+  const hit = function (str) {
+
+    if (location.includes(str)) {
+      let a = location.length
+      a = a - 1;
+      isSunk(a)
+      showHitBlock(str)
+      return true;
+    } else return false;
+  }
+
+  const isSunk = function (a) {
+    if (a === 0) return true;
     else return false;
   }
 
