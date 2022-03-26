@@ -61,25 +61,22 @@ function Ship(length) {
 
   location = setPlace(length);
 
-  let showHitBlock = function (position) {
+  const showHitBlock = function (position) {
     // TODO:
     // Mark position as hit by adding a class
     // Make it unabe to click
   }
 
   const hit = function (str) {
-
     if (location.includes(str)) {
-      let a = location.length
-      a = a - 1;
-      isSunk(a)
+      length -= 1;
       showHitBlock(str)
       return true;
     } else return false;
   }
 
-  const isSunk = function (a) {
-    if (a === 0) return true;
+  const isSunk = function () {
+    if (length === 0) return true;
     else return false;
   }
 
