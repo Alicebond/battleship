@@ -1,4 +1,4 @@
-function Ship(length) {
+const Ship = function (length) {
   let location = undefined;
   // 4 1-length ships, 3 2-length ships, 
   // 2 3-length ships, 1 4-length ships,
@@ -55,9 +55,9 @@ function Ship(length) {
           let placeY = y.splice(randomIndex, 1)[0];
           place = `${placeX[0] + placeY} ${placeX[1] + placeY} ${placeX[2] + placeY} ${placeX[3] + placeY}`;
         }
-    }
+    };
     return place.split(' ');
-  }
+  };
 
   location = setPlace(length);
 
@@ -65,29 +65,77 @@ function Ship(length) {
     // TODO:
     // Mark position as hit by adding a class
     // Make it unabe to click
-  }
+  };
 
   const hit = function (str) {
     if (location.includes(str)) {
       length -= 1;
-      showHitBlock(str)
+      showHitBlock(str);
       return true;
     } else return false;
-  }
+  };
 
   const isSunk = function () {
     if (length === 0) return true;
     else return false;
-  }
+  };
 
   return {
     length,
     location,
     hit,
     isSunk,
+  };
+};
+
+const Gameboard = function () {
+  let attackPosition = [];
+
+  const ship1 = Ship(1);
+  const ship2 = Ship(1);
+  const ship3 = Ship(1);
+  const ship4 = Ship(1);
+  const ship5 = Ship(2);
+  const ship6 = Ship(2);
+  const ship7 = Ship(2);
+  const ship8 = Ship(3);
+  const ship9 = Ship(3);
+  const ship10 = Ship(4);
+  const ships = [ship1, ship2, ship3, ship4, ship5, ship6, ship7, ship8, ship9, ship10];
+  const placeShips = function (ships) {
+    const positions = ships.map(ship => ship.location).flat();
+    for (let item of positions) {
+      // DOM manipulation
+    }
+  };
+
+  const showMissShot = function (str) {
+    // DOM manipulation
+  };
+
+  const receiveAttack = function (str) {
+    for (let i = 0; i < ships.length; i++) {
+      if (ships[i].location.includes(str)) {
+        ships[i].hit(str);
+      } else {
+        attackPosition.push(str);
+        showMissShot(str)
+      }
+    };
+  };
+
+  const ckeckAllSunk = function () {
+    return ships.every(ship => ship.isSunk())
+  };
+
+  return {
+    placeShips,
+    receiveAttack,
+    ckeckAllSunk,
   }
-}
+};
 
 export {
   Ship,
+  Gameboard,
 }

@@ -1,5 +1,6 @@
 import {
-  Ship
+  Ship,
+  Gameboard,
 } from "./script";
 
 describe('Ship function tests', () => {
@@ -22,8 +23,9 @@ describe('Ship function tests', () => {
         .fn(Ship(i).hit)
         .mockImplementationOnce(() => true)
         .mockImplementationOnce(() => false);
-      expect(fakeHit).toBeTruthy;
-      expect(fakeHit).toBeFalsy;
+
+      expect(fakeHit()).toBeTruthy();
+      expect(fakeHit()).toBeFalsy();
     };
   });
 
@@ -34,3 +36,16 @@ describe('Ship function tests', () => {
     expect(Ship(0).isSunk()).toBeTruthy();
   });
 });
+
+describe('Gameboard function tests', () => {
+
+  test('checkAllSunk', () => {
+    let fakeAllSunk = jest
+      .fn(Gameboard.checkAllSunk)
+      .mockImplementationOnce(() => true)
+      .mockImplementationOnce(() => false);
+
+    expect(fakeAllSunk()).toBeTruthy();
+    expect(fakeAllSunk()).toBeFalsy();
+  })
+})
