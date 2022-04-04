@@ -89,7 +89,7 @@ const Ship = function (length) {
 };
 
 const Gameboard = function () {
-  let attackPosition = [];
+  let attackedPosition = [];
 
   const ship1 = Ship(1);
   const ship2 = Ship(1);
@@ -114,11 +114,11 @@ const Gameboard = function () {
   };
 
   const receiveAttack = function (str) {
+    attackedPosition.push(str);
     for (let i = 0; i < ships.length; i++) {
       if (ships[i].location.includes(str)) {
         ships[i].hit(str);
       } else {
-        attackPosition.push(str);
         showMissShot(str)
       }
     };
@@ -134,6 +134,36 @@ const Gameboard = function () {
     ckeckAllSunk,
   }
 };
+
+const Player = (function () {
+  const computer = function () {
+    const getRandomPos = function () {
+      const x = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+      let randomIndex = Math.floor(Math.random() * 10);
+      let randomPosition = '';
+      randomPosition += x.splice(randomIndex, 1)[0];
+      randomPosition += x.splice(randomIndex, 1)[0];
+      return randomPosition;
+    }
+
+    const getValidPos = function () {
+      let validPos = getRandomPos();
+      if (attackedPosition.includes(validPos)) getValidPos();
+      else return validPos;
+    }
+
+    Gameboard.receiveAttack(getValidPos());
+  }
+
+  const user = function () {
+    const gameboard = document.querySelector('#user-gameboard');
+    let blockId = gameboard.addEventListener(click, getAreaStr = () => gameboard.childElement.id);
+    Gameboard.receiveAttack(blockId);
+    computer();
+  }
+
+  user();
+})();
 
 export {
   Ship,
