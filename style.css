@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.hero {
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 0;
+}
+
+.hero,
+.row {
+  display: flex;
+}
+
+.block {
+  height: 30px;
+  width: 30px;
+  /* border: 1px solid black; */
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.row10 > .block {
+  border-bottom: 1px solid black;
+}
+
+.row :first-child {
+  border-left: 1px solid black;
+}
