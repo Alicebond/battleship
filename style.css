@@ -2,13 +2,14 @@ body {
   margin: 0;
   box-sizing: border-box;
   width: 100vw;
+  /* height: 100vh; */
 }
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
+  height: 80px;
 }
 
 .hero {
@@ -17,6 +18,7 @@ body {
   justify-content: center;
 
   padding: 40px 0;
+  height: 100%;
 }
 
 .hero,
@@ -38,4 +40,11 @@ body {
 
 .row :first-child {
   border-left: 1px solid black;
+}
+
+.vertical-line {
+  height: 200px;
+  width: 1px;
+  /* border-left: 1px solid black; */
+  background-color: rgb(63, 63, 63);
 }

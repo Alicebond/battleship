@@ -165,6 +165,10 @@ const Player = (function () {
   user();
 })();
 
+const newGame = function () {
+
+}
+
 export {
   Ship,
   Gameboard,
